@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: white;
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo h1 {
+    color: #2563eb;
+    font-size: 28px;
+}
+
+.logo p {
+    color: #64748b;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.login-header {
+    margin-bottom: 25px;
+}
+
+.login-header h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.login-header p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 13px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.btn-login:hover {
+    background-color: #1d4ed8;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.register-link a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* PAGINA PRINCIPAL */
+
+.home-header {
+    background-color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.home-header h2 {
+    color: #2563eb;
+}
+
+.home-header a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.home-container {
+    width: 85%;
+    margin: 40px auto;
+}
+
+.welcome {
+    margin-bottom: 40px;
+}
+
+.welcome h1 {
+    margin-bottom: 10px;
+}
+
+.projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.projects-empty {
+    background-color: white;
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.projects-empty p {
+    margin-top: 10px;
+    color: #777;
+}
+
+
+/* FORMULARIO DE PROYECTOS */
+
+.project-form {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    margin-bottom: 40px;
+}
+
+.project-form h2 {
+    margin-bottom: 10px;
+}
+
+.project-form>p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.project-form textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+}
+
+.btn-project {
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-project:hover {
+    background-color: #1d4ed8;
+}
+
+.projects h2 {
+    margin-bottom: 20px;
+}
+
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 25px;
+    }
+}
