@@ -1,75 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - ProjectHub</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Protección inmediata: sin token no se muestra nada -->
+    <script>
+        if (!localStorage.getItem("authToken")) {
+            window.location.replace("index.html");
+        }
+    </script>
 </head>
 
 <body>
 
     <header class="home-header">
         <h2>ProjectHub</h2>
-        <a href="index.html">Cerrar sesión</a>
+        <a href="index.html" id="cerrar-sesion">Cerrar sesión</a>
     </header>
 
     <main class="home-container">
 
         <section class="welcome">
-            <h1>¡Bienvenido a ProjectHub!</h1>
+            <h1>¡Bienvenido, <span id="nombre-usuario">a ProjectHub</span>!</h1>
             <p>Administra y organiza tus proyectos en un solo lugar.</p>
         </section>
 
-
-        <section class="project-form">
-            <h2>Registrar nuevo proyecto</h2>
-            <p>Completa los siguientes datos para agregar un proyecto.</p>
-
-            <form>
-                <div class="form-group">
-                    <label for="titulo">Nombre del proyecto</label>
-                    <input type="text" id="titulo" placeholder="Ej. Sistema de inventario">
-                </div>
-
-                <div class="form-group">
-                    <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" placeholder="Describe tu proyecto..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="tecnologias">Tecnologías</label>
-                    <input type="text" id="tecnologias" placeholder="Ej. Java, HTML, CSS, MySQL">
-                </div>
-
-                <div class="form-group">
-                    <label for="repositorio">Repositorio</label>
-                    <input type="url" id="repositorio" placeholder="https://github.com/usuario/proyecto">
-                </div>
-
-                <div class="form-group">
-                    <label for="imagenes">Imágenes del proyecto</label>
-                    <input type="file" id="imagenes" accept="image/*" multiple>
-                </div>
-
-                <button type="button" class="btn-project">
-                    Guardar proyecto
-                </button>
-            </form>
-        </section>
-
         <section class="projects">
-            <h2>Mis proyectos</h2>
+            <div class="projects-header">
+                <h2>Mis proyectos</h2>
+                <button type="button" id="btn-agregar" class="btn-project">Agregar proyecto</button>
+            </div>
 
-            <div class="projects-empty">
+            <p id="mensaje-lista" class="form-message" hidden></p>
+
+            <div id="lista-proyectos" class="projects-grid"></div>
+
+            <div id="proyectos-vacio" class="projects-empty" hidden>
                 <h3>Aún no tienes proyectos</h3>
-                <p>Cuando agregues un proyecto, aparecerá aquí.</p>
+                <p>Usa "Agregar proyecto" para registrar el primero.</p>
             </div>
         </section>
 
-
     </main>
 
+    <dialog id="modal-proyecto" class="modal">
+        <form id="form-proyecto">
+            <h2 id="modal-titulo">Agregar proyecto</h2>
+
+            <div class="form-group">
+                <label for="titulo">Nombre del proyecto</label>
+                <input type="text" id="titulo" placeholder="Ej. Sistema de inventario" required>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" placeholder="Describe tu proyecto..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="tecnologias">Tecnologías (separadas por coma)</label>
+                <input type="text" id="tecnologias" placeholder="Ej. Java, HTML, CSS, MySQL">
+            </div>
+
+            <div class="form-group">
+                <label for="repositorio">Repositorio</label>
+                <input type="url" id="repositorio" placeholder="https://github.com/usuario/proyecto">
+            </div>
+
+            <div class="form-group">
+                <label for="imagenes">URLs de imágenes (separadas por coma)</label>
+                <input type="text" id="imagenes" placeholder="https://ejemplo.com/captura1.png">
+            </div>
+
+            <p id="mensaje-form" class="form-message" hidden></p>
+
+            <div class="modal-actions">
+                <button type="button" id="btn-cancelar" class="btn-secondary">Cancelar</button>
+                <button type="submit" id="btn-guardar" class="btn-project">Guardar proyecto</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="js/api.js"></script>
+    <script src="js/home.js"></script>
 </body>
 
 </html>
