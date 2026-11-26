@@ -1,4 +1,4 @@
-import { apiRequest } from "./api.js";
+import { apiRequest, ApiError } from "./api.js";
 import { Usuario } from "./modelos.js";
 
 const TOKEN_KEY = "authToken";
@@ -13,7 +13,7 @@ export class AuthService {
         const data = await apiRequest("/auth/login", { method: "POST", body: { email, password } });
 
         if (!data || !data.token) {
-            throw new Error("La API no devolvió un token.");
+            throw new ApiError("La API no devolvió un token.", 0);
         }
 
         localStorage.setItem(TOKEN_KEY, data.token);
@@ -43,4 +43,15 @@ export class AuthService {
         }
     }
 
+    // El API pide userId al crear un proyecto: sale del usuario guardado o del token
+    getUserId() {
+        const usuario = this.getUsuario();
+        if (usuario && usuario.id) return usuario.id;
+        try {
+            const payload = JSON.parse(atob(this.getToken().split(".")[1].replace(/-/g, "+").replace(/_/g, "/")));
+            return payload._id || payload.id || payload.userId;
+        } catch {
+            return undefined;
+        }
+    }
 }
